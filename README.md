@@ -7,14 +7,12 @@ Script generates individual slurm script files for individual run files to be ru
 2. `slurm_checks.sh`: checks the duration and last updates on running jobs and checks the status of completed jobs
 3. `slurm_runsummary.sh`: provides a summary of the runtime durations for completed jobs
 
-## workflow and components
-
-### 1. inputs
+## 1. inputs
 - **run files directory**: directory containing the individual scripts to run on the cluster. It's location is specified in the config file.
 
-### 2. configuration
+## 2. configuration
 
-#### a. Slurm script generator
+### a. Slurm script generator
 The `slurm_utils/slurm_gen.sh` is the default template for generating the slurm script. It is necessary to load the packages to run the script in the slurm job (e.g. pandas) and execute the file in the correct language (e.g. Python).
 
 - The current template is configured to run R scripts:
@@ -37,7 +35,7 @@ export FSLOUTPUTTYPE=NIFTI_GZ
 python3 $RUN_FILE
 ```
 
-#### b. Slurm job configuration
+### b. Slurm job configuration
 Input parameters should be provided to the file `slurm_utils/slurm_config.sh` file:
 
 - slurm job details
@@ -75,6 +73,7 @@ sleeponit=0     # choice to sleep for 5hours before running the loop
 SCRIPT_DIR=$PWD/work/run_files       # directory with scripts to run
 RESULTS_DIR=$PWD/results/top         # outputted results from completed scripts
 ```
+
 
 ## example usage
 
