@@ -1,18 +1,19 @@
 # Slurm script generator and monitor for HPCs
 
-## overview
-
 Script generates individual slurm script files for individual run files to be run on HPC. There are 3 functional scripts:
 1. `slurm_loop.sh`: generates slurm scripts and runs them on the cluster
 2. `slurm_checks.sh`: checks the duration and last updates on running jobs and checks the status of completed jobs
 3. `slurm_runsummary.sh`: provides a summary of the runtime durations for completed jobs
 
-## 1. inputs
+
+
+## 1. Inputs
 - **run files directory**: directory containing the individual scripts to run on the cluster. It's location is specified in the config file.
 
-## 2. configuration
 
-### a. Slurm script generator
+## 2. Configuration
+
+### Slurm script generator
 The `slurm_utils/slurm_gen.sh` is the default template for generating the slurm script. It is necessary to load the packages to run the script in the slurm job (e.g. pandas) and execute the file in the correct language (e.g. Python).
 
 - The current template is configured to run R scripts:
@@ -35,7 +36,8 @@ export FSLOUTPUTTYPE=NIFTI_GZ
 python3 $RUN_FILE
 ```
 
-### b. Slurm job configuration
+
+### Slurm job configuration
 Input parameters should be provided to the file `slurm_utils/slurm_config.sh` file:
 
 - slurm job details
