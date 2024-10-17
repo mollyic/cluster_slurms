@@ -77,19 +77,19 @@ RESULTS_DIR=$PWD/results/top         # outputted results from completed scripts
 ```
 
 
-## Example usage
+## `slurm_loop.sh` usage
 
-### 1. `slurm_loop.sh`
-- Generate and run slurm scripts
+Generate and run slurm scripts.
+
 ```
 # uses default slurm directory: $PWD/work/slurm
-bash work/slurm/slurm_loop.sh
+bash slurm_loop.sh
 
 # specify slurm directory:
-bash work/slurm/slurm_loop.sh $PWD/slurm
+bash slurm_loop.sh $PWD/slurm
 ```
 
-#### slurm_loop.sh example output
+### Example output
 - the script only runs jobs if the script has no result file
 ```
 -------------------------------
@@ -153,23 +153,24 @@ Checking slurm IDs...
 ```
 
 
-### 2. `slurm_checks.sh`
-- Check on running and completed slurm scripts
+## `slurm_checks.sh` usage
+Check on running and completed slurm scripts
+
 ```
 # Provides summary of running jobs:
-bash work/slurm/slurm_checks.sh
+bash slurm_checks.sh
 
 # Provides summary of running and completed jobs:
-bash work/slurm/slurm_checks.sh all
+bash slurm_checks.sh all
 
 # Provides summary of SUCCESSFUL completed jobs:
-bash work/slurm/slurm_checks.sh all done
+bash slurm_checks.sh all done
 
 # Provides summary of FAILED jobs:
-bash work/slurm/slurm_checks.sh all fail
+bash slurm_checks.sh all fail
 
 ```
-#### slurm_checks.sh example output
+### Example output
 - a summary of each job will be printed in the terminal, the 'out file' field prints last lines of job .out file
 
 ```
@@ -188,8 +189,8 @@ File: jobfilename-254599987.err
 
 ```
 
-### 3. `slurm_runsummary.sh`
+## `slurm_runsummary.sh` usage
 - Present summary of completed scripts
 ```
-bash work/slurm/slurm_runsummary.sh
+bash slurm_runsummary.sh
 ```
