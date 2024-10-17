@@ -18,8 +18,9 @@ echo "#!/bin/bash
 #SBATCH --nodes=$NODES                         #NODE: number of computers in cluster
 #SBATCH --ntasks-per-node=$TASKS               #TASK:  tasks (instances of program) per node
 
-
+# add modules (e.g. R)
 module load R/4.4.0
+#add interpreter (e.g. Rscript) to read and execute script
 Rscript $RUN_FILE
 
 ">> $SLURM_SCRIPT
