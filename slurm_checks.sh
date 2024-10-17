@@ -14,7 +14,7 @@ if [[ $runner == 'runners' ]]; then
     echo -e 'File: '$(basename $file) '\t(Slurm ID: '$p')'
     echo -e '\t * Last updated: '$(ls -la $(dirname $file) | grep $p | grep '.err' | awk '{print $8}')
     echo -e '\t * Run time: '$(squeue | grep $p | awk '{print $6}')
-    echo -e '\t * Status:'  $(grep -R 'tuning' $file| tail -n 1)
+    #echo -e '\t * Status:'  $(grep -R 'tuning' $file| tail -n 1)
     echo -e "\n"
   done
   echo -e '_____________\n\n  Total running: ' ${#t[@]} '\n_____________\n'

@@ -7,9 +7,23 @@ Script generates individual slurm script files for individual run files to be ru
 
 
 
-## Inputs
-1. **run files directory**: directory containing the individual scripts to run on the cluster. It's location is specified in the config file.
+## Requirements
+1. **run files**: the individual scripts to run on the cluster. Each slurm job corresponds to a single script. For example a directory of R scripts (.py) that execute the main script with different sets of parameters.
 
+### Run files example
+`file1.R` and `file2.R` run the main script with different variables. The `slurm_loop.sh` will run each of these R files as a job on the HPC.
+
+```
+# file1.R
+var1<-  5
+var2<-  10
+source('main.R')
+
+# file2.R
+var1<-  2000
+var2<-  2
+source('main.R')
+```
 
 ## Configuration
 
@@ -160,19 +174,35 @@ Check on running and completed slurm scripts
 # Provides summary of running jobs:
 bash slurm_checks.sh
 
-# Provides summary of running and completed jobs:
+# Provides more detailed overview of running, failed and completed jobs:
 bash slurm_checks.sh all
 
-# Provides summary of SUCCESSFUL completed jobs:
+# Provides more detailed overview of completed jobs:
 bash slurm_checks.sh all done
 
-# Provides summary of FAILED jobs:
+# Provides more detailed overview of failed jobs:
 bash slurm_checks.sh all fail
+
+# Provides more detailed overview of running jobs:
+bash slurm_checks.sh all run
 
 ```
 ### Example output
-- a summary of each job will be printed in the terminal, the 'out file' field prints last lines of job .out file
+- `slurm_checks.sh`: quick overview of each job, the 'out file' field prints last lines of job .out file
 
+```
+File: cls_qlty_FLAIR_pccomps-20_weights-w_invsqr_type-avg_quality_mode-classification-299987.err 	(Slurm ID: 299987)
+	 * Last updated: 12:09
+	 * Run time: 2:25:08
+	 * Status:
+
+
+File: cls_qlty_FLAIR_pccomps-20_weights-w_inverse_type-avg_quality_mode-classification-299988.err 	(Slurm ID: 299988)
+	 * Last updated: 12:09
+	 * Run time: 2:25:08
+	 * Status:
+```
+- `slurm_checks.sh all`: detailed summary of each job, the 'out file' field prints last lines of job .out file
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 File: jobfilename-254599987.err
