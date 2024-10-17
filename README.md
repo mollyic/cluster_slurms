@@ -8,9 +8,9 @@ Script generates individual slurm script files for individual run files to be ru
 
 
 ## Requirements
-1. **run files**: the individual scripts to run on the cluster. Each slurm job corresponds to a single script. For example a directory of R scripts (.py) that execute the main script with different sets of parameters.
+**Run files**: the individual scripts to run on the cluster. Each slurm job corresponds to a single script. For example a directory of R scripts (.py) that execute the main script with different sets of parameters.
 
-### Run files example
+#### Run files example
 `file1.R` and `file2.R` run the main script with different variables. The `slurm_loop.sh` will run each of these R files as a job on the HPC.
 
 ```
